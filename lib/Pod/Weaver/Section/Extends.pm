@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.002';
+  $Pod::Weaver::Section::Extends::VERSION = '0.003';
 }
 
 use strict;
@@ -33,11 +33,7 @@ sub weave_section {
     $module =~ s{/}{::};
     $module =~ s/\.pm//;
 
-    print "module = [$module]";
-
     my @parents = $self->_get_parents( $module );        
-
-    print "parents = " . Dumper \@parents;
 
     return unless @parents;
 
@@ -86,7 +82,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
