@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.003';
+  $Pod::Weaver::Section::Extends::VERSION = '0.004';
 }
 
 use strict;
@@ -13,13 +13,13 @@ use Moose;
 with 'Pod::Weaver::Role::Section';
 
 use aliased 'Pod::Elemental::Element::Nested';
-use aliased 'Pod::Elemental::Element::Pod5::Verbatim';
 use aliased 'Pod::Elemental::Element::Pod5::Command';
 
 sub weave_section { 
     my ( $self, $doc, $input ) = @_;
 
     my $file = $input->{filename};
+    return unless $file =~ m{^lib/};
 
     # yeah, this is a stupid way to do it. it's only for generating
     # docs though. shut up.
@@ -82,7 +82,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 

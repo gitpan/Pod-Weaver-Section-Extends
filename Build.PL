@@ -18,7 +18,7 @@ my %module_build_args = (
     "Mike Friedman <friedo\@friedo.com>"
   ],
   "dist_name" => "Pod-Weaver-Section-Extends",
-  "dist_version" => "0.003",
+  "dist_version" => "0.004",
   "license" => "perl",
   "module_name" => "Pod::Weaver::Section::Extends",
   "recommends" => {},
@@ -27,7 +27,6 @@ my %module_build_args = (
     "Moose" => 0,
     "Pod::Elemental::Element::Nested" => 0,
     "Pod::Elemental::Element::Pod5::Command" => 0,
-    "Pod::Elemental::Element::Pod5::Verbatim" => 0,
     "Pod::Weaver::Role::Section" => 0,
     "aliased" => 0,
     "strict" => 0,

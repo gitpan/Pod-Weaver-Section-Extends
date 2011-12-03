@@ -18,11 +18,10 @@ requires:
   Moose: 0
   Pod::Elemental::Element::Nested: 0
   Pod::Elemental::Element::Pod5::Command: 0
-  Pod::Elemental::Element::Pod5::Verbatim: 0
   Pod::Weaver::Role::Section: 0
   aliased: 0
   strict: 0
   warnings: 0
 resources:
   repository: git://github.com/friedo/pod-weaver-section-extends.git
-version: 0.003
+version: 0.004

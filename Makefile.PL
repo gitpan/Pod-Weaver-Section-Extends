@@ -26,13 +26,12 @@ my %WriteMakefileArgs = (
     "Moose" => 0,
     "Pod::Elemental::Element::Nested" => 0,
     "Pod::Elemental::Element::Pod5::Command" => 0,
-    "Pod::Elemental::Element::Pod5::Verbatim" => 0,
     "Pod::Weaver::Role::Section" => 0,
     "aliased" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.003",
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => ""
   }
