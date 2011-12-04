@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.006';
+  $Pod::Weaver::Section::Extends::VERSION = '0.007';
 }
 
 use strict;
@@ -39,12 +39,16 @@ sub weave_section {
             content   => 4
         } ),
 
-        map { 
+        ( map { 
             Command->new( {
                 command    => 'item',
                 content    => sprintf 'L<%s>', $_
             } ),
-        } @parents
+        } @parents ),
+        Command->new( { 
+            command   => 'back',
+            content   => ''
+        } )
     );        
 
     push @{ $doc->children },
@@ -78,7 +82,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 
