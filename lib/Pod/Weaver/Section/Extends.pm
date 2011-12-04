@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.005';
+  $Pod::Weaver::Section::Extends::VERSION = '0.006';
 }
 
 use strict;
@@ -10,6 +10,7 @@ use warnings;
 # ABSTRACT: Add a list of parent classes to your POD.
 
 use Moose;
+use Module::Load;
 with 'Pod::Weaver::Role::Section';
 
 use aliased 'Pod::Elemental::Element::Nested';
@@ -21,17 +22,12 @@ sub weave_section {
     my $file = $input->{filename};
     return unless $file =~ m{^lib/};
 
-    # yeah, this is a stupid way to do it. it's only for generating
-    # docs though. shut up.
-    my $success = do $file;
-
-    die "Could not compile $file to find parent class data: $@ $!"
-      unless $success;
-
     my $module = $file;
     $module =~ s{^lib/}{};    # assume modules live under lib
     $module =~ s{/}{::}g;
     $module =~ s/\.pm//;
+
+    load $module;
 
     my @parents = $self->_get_parents( $module );        
 
@@ -82,7 +78,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
