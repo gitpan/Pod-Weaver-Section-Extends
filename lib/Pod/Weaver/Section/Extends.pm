@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.007';
+  $Pod::Weaver::Section::Extends::VERSION = '0.008';
 }
 
 use strict;
@@ -27,6 +27,8 @@ sub weave_section {
     $module =~ s{/}{::}g;
     $module =~ s/\.pm//;
 
+    unshift @INC, './lib';    # assume we want modules from the CWD
+
     load $module;
 
     my @parents = $self->_get_parents( $module );        
@@ -42,7 +44,7 @@ sub weave_section {
         ( map { 
             Command->new( {
                 command    => 'item',
-                content    => sprintf 'L<%s>', $_
+                content    => sprintf '* L<%s>', $_
             } ),
         } @parents ),
         Command->new( { 
@@ -58,6 +60,8 @@ sub weave_section {
             content   => 'EXTENDS',
             children  => \@pod
         } );
+
+    shift @INC;
 
 }
 
@@ -82,7 +86,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
