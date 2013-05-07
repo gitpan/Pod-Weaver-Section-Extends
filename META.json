@@ -4,7 +4,7 @@
       "Mike Friedman <friedo@friedo.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -27,14 +27,14 @@
       },
       "runtime" : {
          "requires" : {
-            "Module::Load" : 0,
-            "Moose" : 0,
-            "Pod::Elemental::Element::Nested" : 0,
-            "Pod::Elemental::Element::Pod5::Command" : 0,
-            "Pod::Weaver::Role::Section" : 0,
-            "aliased" : 0,
-            "strict" : 0,
-            "warnings" : 0
+            "Module::Load" : "0",
+            "Moose" : "0",
+            "Pod::Elemental::Element::Nested" : "0",
+            "Pod::Elemental::Element::Pod5::Command" : "0",
+            "Pod::Weaver::Role::Section" : "0",
+            "aliased" : "0",
+            "strict" : "0",
+            "warnings" : "0"
          }
       }
    },
@@ -42,10 +42,10 @@
    "resources" : {
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/friedo/pod-weaver-section-extends.git",
-         "web" : "http://github.com/friedo/pod-weaver-section-extends"
+         "url" : "git://github.com/mokko/pod-weaver-section-extends.git",
+         "web" : "https://github.com/mokko/pod-weaver-section-extends"
       }
    },
-   "version" : "0.008"
+   "version" : "0.0081"
 }
 

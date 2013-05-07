@@ -1,11 +1,11 @@
 package Pod::Weaver::Section::Extends;
 {
-  $Pod::Weaver::Section::Extends::VERSION = '0.008';
+  $Pod::Weaver::Section::Extends::VERSION = '0.0081';
 }
 
 use strict;
 use warnings;
-
+use lib './lib';
 
 # ABSTRACT: Add a list of parent classes to your POD.
 
@@ -19,17 +19,18 @@ use aliased 'Pod::Elemental::Element::Pod5::Command';
 sub weave_section { 
     my ( $self, $doc, $input ) = @_;
 
-    my $file = $input->{filename};
-    return unless $file =~ m{^lib/};
+    my $filename = $input->{filename};
+    return unless $filename =~ m{^lib/};
 
-    my $module = $file;
-    $module =~ s{^lib/}{};    # assume modules live under lib
+    # works only if one package pro file
+    my $inc_filename = $filename;         #as in %INC's keys
+    $inc_filename =~ s{^lib/}{};          # assume modules live under lib
+    my $module = $inc_filename;
     $module =~ s{/}{::}g;
-    $module =~ s/\.pm//;
+    $module =~ s{\.\w+$}{};
 
-    unshift @INC, './lib';    # assume we want modules from the CWD
-
-    load $module;
+    eval { load $inc_filename };
+    print $@ if $@;
 
     my @parents = $self->_get_parents( $module );        
 
@@ -61,8 +62,6 @@ sub weave_section {
             children  => \@pod
         } );
 
-    shift @INC;
-
 }
 
 sub _get_parents { 
@@ -86,7 +85,7 @@ Pod::Weaver::Section::Extends - Add a list of parent classes to your POD.
 
 =head1 VERSION
 
-version 0.008
+version 0.0081
 
 =head1 SYNOPSIS
 
